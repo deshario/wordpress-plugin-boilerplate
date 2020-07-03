@@ -2,7 +2,7 @@
 
 /**
  * Plugin Name:       Deshario Boilerplate
- * Plugin URI:        http://github.com/deshario
+ * Plugin URI:        https://github.com/deshario/wordpress-plugin-boilerplate
  * Description:       Wordpress Plugin Boilerplate
  * Version:           1.0.0
  * Author:            Deshario
