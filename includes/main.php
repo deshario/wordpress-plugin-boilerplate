@@ -55,6 +55,16 @@ class DesharioBPlate {
 		$this->loader->add_action('wp_enqueue_scripts', $plugin_public, 'enqueue_scripts');
 		$this->loader->add_shortcode('shtdplt1', $plugin_public, 'shortcode1');
 		$this->loader->add_shortcode('shtdplt2', $plugin_public, 'shortcode2');
+
+		$this->loader->add_action('wp_ajax_testAjaxRequest', $plugin_public, 'testAjaxRequest');
+		$this->loader->add_action('wp_ajax_nopriv_testAjaxRequest', $plugin_public, 'guestTestAjaxRequest');
+		
+		$this->loader->add_action('wp_ajax_postSampleAjaxRequest', $plugin_public, 'postSampleAjaxRequest');
+
+
+		// wp_ajax_(actionName) For users
+		// wp_ajax_nopriv_(actionName) For guests
+
 	}
 
 	public function run() {
