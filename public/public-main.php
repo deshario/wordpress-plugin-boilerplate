@@ -19,11 +19,17 @@ class DesharioBPlate_Public {
 		wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/deshario-bplate-public.js', array( 'jquery' ), $this->version, false );
 	}
 
-	public function pshortcode( $atts, $content = null ){
-		// wp_register_style( 'Font_Awesome', 'https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css');
-		// wp_enqueue_style('Font_Awesome'); // Enque on shortcode only
+	public function shortcode1( $atts, $content = null ){
 		ob_start();
-		include_once('partials/display.php');
+		include_once('partials/form.php');
+		return ob_get_clean();
+	}
+
+	public function shortcode2($atts, $content = "") {
+		wp_register_style('bootstrapAsset','https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css');
+		wp_enqueue_style('bootstrapAsset'); // Enque on shortcode only
+		ob_start();
+		include_once('partials/panel.php');
 		return ob_get_clean();
 	}
 

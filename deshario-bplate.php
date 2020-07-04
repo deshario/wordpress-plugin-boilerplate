@@ -17,7 +17,7 @@ if (!defined('WPINC')){
 	die;
 }
 
-define('PLUGIN_NAME_VERSION', '1.0.0');
+define('DesharioBPlate_VERSION', '1.0.0');
 
 function activate_plugin_name() {
 	require_once plugin_dir_path( __FILE__ ) . 'includes/activator.php';
