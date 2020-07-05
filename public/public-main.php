@@ -31,7 +31,7 @@ class DesharioBPlate_Public {
 	}
 
 	public function postSampleAjaxRequest(){
-		check_ajax_referer('sample-nonce', 'security'); // Validate Nonce
+		check_ajax_referer('sample-nonce','security'); // Validate Nonce
 		$username = isset($_POST['username']) ? $_POST['username'] : '-';
 		wp_send_json_success($username);
 	   	die();
@@ -40,6 +40,9 @@ class DesharioBPlate_Public {
 	public function shortcode1( $atts, $content = null ){
 		wp_register_style('semanticCss','https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css');
 		wp_enqueue_style('semanticCss');
+
+		wp_register_script('semanticJs', 'https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js', null, null, true );
+		wp_enqueue_script('semanticJs');
 
 		wp_enqueue_script(
 			'submitForm',
@@ -57,6 +60,7 @@ class DesharioBPlate_Public {
 				'deshario_nonce' => wp_create_nonce('sample-nonce')
 			)
 		);
+
 		ob_start();
 		include_once('partials/form.php');
 		return ob_get_clean();

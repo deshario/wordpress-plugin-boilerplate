@@ -1,9 +1,19 @@
 
-(function( $ ) {
-	'use strict';
+(function($){
+    'use strict';
     
+    const startLoading = () => {
+        jQuery("#submitForm").addClass("loading");
+        jQuery("#desharioForm :input").prop("disabled", true);
+    }
+
+    const completeLoading = () => {
+        jQuery("#submitForm").removeClass("loading");
+        jQuery("#desharioForm :input").prop("disabled", false);
+    }
+
     jQuery(window).load(function(){
-        
+
         console.log('jQuery Version : ',jQuery.fn.jquery);
 
         console.log('wp_localize_script : ',desharioLocalize);
@@ -17,21 +27,19 @@
                     // action : 'testAjaxRequest',
                     action : 'postSampleAjaxRequest',
                     security : desharioLocalize.deshario_nonce, // Validate None
-                    username : 'deshario'
+                    username : jQuery("input[name='firstname']").val()
                 },
-                success : function( response ) {
+                beforeSend: startLoading,
+                complete: completeLoading,
+                success : response => {
                     console.log(response);
                 },
-                error: function (xhr, ajaxOptions, thrownError) {
+                error: (xhr, ajaxOptions, thrownError) => {
                     console.log(`${xhr.status} ${ajaxOptions}`);
+                    completeLoading();
                 }
             });
         });
-
-        window.ajaxSubmit = () => {
-            var BookingForm = jQuery(this).serialize();
-            console.log('BookingForm :: ',BookingForm);
-        }
 
     });
 

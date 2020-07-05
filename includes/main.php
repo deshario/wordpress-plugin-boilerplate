@@ -61,7 +61,6 @@ class DesharioBPlate {
 		
 		$this->loader->add_action('wp_ajax_postSampleAjaxRequest', $plugin_public, 'postSampleAjaxRequest');
 
-
 		// wp_ajax_(actionName) For users
 		// wp_ajax_nopriv_(actionName) For guests
 
